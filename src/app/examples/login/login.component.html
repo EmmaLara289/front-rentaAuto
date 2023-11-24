@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+        <div class="row justify-content-center">
+            <div style="width: 400px; height: 500px; background-color: rgb(242, 174, 170);">
+                <form (ngSubmit)="login()" style="text-align: center;">
+                    <div class="form-group col-md-6">
+                        <header>
+                            <h3>Login</h3>
+                        </header>
+                        <div class="form-group">
+                            <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}">
+                        </div>
+                    </div>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
