@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'app/components/models/user';
 import { UserService } from 'app/components/services/user.service';
+import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-login',
@@ -16,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _userService : UserService,
+    private _router: Router,
   ) { 
     this.user = new User(1, '', '', '', '', 1);
   }
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
       response => {
         if (response.status != 'error') {
          console.log("Funciona");
+         this._router.navigate(['/home']);
         }
         /*
         setTimeout(function() {
@@ -40,6 +44,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log("No funciona");
+        Swal.fire('UPS', 'El usuario no se ha podido identificar.', 'error');
       }
     );
   }
