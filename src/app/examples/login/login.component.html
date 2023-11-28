@@ -4,11 +4,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                    <div class="card">
-                        <h3 class="title">Log In</h3>
-                        <form class="register-form" (ngSubmit)="login()">
-                            <label>Email</label>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="card card-register">
+                        <h3 class="title">Iniciar sesion</h3>
+                        <form class="col-md5-" (ngSubmit)="login()">
+                            <label>Correo</label>
+                            <!--div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                       <i class="nc-icon nc-email-85"></i>
@@ -16,18 +16,28 @@
                                 </div>
 
                                 <input name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false">
-                            </div>
+                            </div-->
 
-                            <label>Password</label>
-                            <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                            <div class="input-group flex-nowrap ImputBorder">
+                                <input name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="addon-wrapping">
+                              </div>
+
+                            <label>Contraseña</label>
+                            <!--div class="input-group form-group-no-border ImputBorder" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}">
+                            </div-->
+
+                            <div class="input-group flex-nowrap ImputBorder">
+                                <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="addon-wrapping">
+
                             </div>
-                            <button class="btn btn-danger btn-block btn-round">Log In</button>
+
+                            <button class="btn btn-danger btn-block btn-round">Ingresar</button>
                         </form>
                         <div class="forgot">
                             <a href="#" class="btn btn-link btn-danger">¿Aún no estás registrado?</a>
