@@ -1,32 +1,76 @@
 <div class="wrapper">
     <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
         <div class="filter"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <form class="card-model">
-                        <h3 class="title title-model">Registro de Usuarios</h3>
-                        <label>Nombre</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input name="name" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Correo</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input name="email" type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Contraseña</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Telefono</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input type="text" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <div style="padding: 20px;"></div>
-                    </form>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <div class="row">
+            <form class="card-model" style="right: 5%;">
+                <h3 class="title title-model">Registro de Usuarios</h3>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="name" placeholder="">
+                    <label for="floatingInput">Nombre</label>
                 </div>
+                <div class="form-floating mb-4">
+                    <input type="email" class="form-control" id="email" placeholder="">
+                    <label for="floatingInput">Correo</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="password" placeholder="">
+                    <label for="floatingInput">Contraseña</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="password-repeat" placeholder="">
+                    <label for="floatingInput">Verifique Contraseña</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="telefono" placeholder="">
+                    <label for="floatingInput">Telefono</label>
+                </div>
+                <div style="padding: 20px;"></div>
+            </form>
 
-                <div class="col-md-4">
+            <form class="card-model" style="right: 0%;">
+                <h3 class="title title-model">Registro de Usuarios</h3>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Foto Delantera</label>
+                    <input class="form-control" type="file" id="id_front">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Foto Trasera</label>
+                    <input class="form-control" type="file" id="id_back">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Licencia Delantera</label>
+                    <input class="form-control" type="file" id="licencia_front">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Licencia Trasera</label>
+                    <input class="form-control" type="file" id="licencia_back">
+                </div>
+                <div style="padding: 20px;"></div>
+            </form>
+
+            <form class="card-model" style="right: -5%;">
+                <h3 class="title title-model">Registro de Usuarios</h3>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="numeros" placeholder="">
+                    <label for="floatingInput">16 Numeros</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="name_card" placeholder="">
+                    <label for="floatingInput">Nombre</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="cvv" placeholder="">
+                    <label for="floatingInput">CVV</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="expired_data" placeholder="">
+                    <label for="floatingInput">MM/YY</label>
+                </div>
+                <div style="padding: 20px;"></div>
+            </form>
+
+            <!--div class="col-md-4">
                     <form class="card-model">
                         <h3 class="title title-model">Registro de Usuarios</h3>
                         <label>Telefono</label>
@@ -70,8 +114,7 @@
                         </div>
                         <div style="padding: 20px;"></div>
                     </form>
-                </div>
-            </div>
+                </div-->
         </div>
     </div>
 </div>
