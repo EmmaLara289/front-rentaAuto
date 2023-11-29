@@ -1,5 +1,19 @@
 .card-model {
-    width: 500px;
-    height: 600px;
-    background-color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+    //width: 500px;
+    //height: 600px;
+    background-color: transparent;
+    box-shadow: 0 6px 20px 4px rgb(255, 255, 255);
+    //margin: 10%;
+}
+
+.title-model {
+    text-align: center;
+}
+
+.input-model {
+    border-radius: 10px;
+    margin: 20px;
 }
