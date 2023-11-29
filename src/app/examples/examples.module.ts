@@ -8,6 +8,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { CatComponent } from './cat/cat.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { LoginComponent } from './login/login.component';
         LandingComponent,
         SignupComponent,
         ProfileComponent,
+        CatComponent
     ]
 })
 export class ExamplesModule { }

@@ -10,16 +10,18 @@ import { LandingComponent } from './examples/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { LoginComponent } from './examples/login/login.component';
 import { RegisterComponent } from './examples/register/register.component';
+import { CatComponent } from './examples/cat/cat.component';
 
 const routes: Routes =[
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'home',             component: ComponentsComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent },
     { path: 'login',            component: LoginComponent},
-    { path: 'register',         component: RegisterComponent}
+    { path: 'register',         component: RegisterComponent},
+    { path: 'cat',              component: CatComponent}
 ];
 
 @NgModule({
