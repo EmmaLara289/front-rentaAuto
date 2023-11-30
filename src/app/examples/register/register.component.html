@@ -31,20 +31,25 @@
             <form class="card-model" style="right: 0%;">
                 <h3 class="title title-model">Registro de Usuarios</h3>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Foto Delantera</label>
-                    <input class="form-control" type="file" id="id_front">
+                    <label for="formFile" class="form-label">Foto De Perfil</label>
+                    <input class="form-control" type="file" id="profile_pic" accept="image/png, image/jpeg" (change)="foto($event.target.files, 1)">
                 </div>
                 <div class="mb-3">
+                    <label for="formFile" class="form-label">Foto Delantera</label>
+                    <input class="form-control" type="file" id="id_front" accept="image/png, image/jpeg" (change)="foto($event.target.files, 2)">
+                </div>
+
+                <div class="mb-3">
                     <label for="formFile" class="form-label">Foto Trasera</label>
-                    <input class="form-control" type="file" id="id_back">
+                    <input class="form-control" type="file" id="id_back" accept="image/png, image/jpeg" (change)="foto($event.target.files, 3)">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Licencia Delantera</label>
-                    <input class="form-control" type="file" id="licencia_front">
+                    <input class="form-control" type="file" id="licencia_front" accept="image/png, image/jpeg" (change)="foto($event.target.files, 4)">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Licencia Trasera</label>
-                    <input class="form-control" type="file" id="licencia_back">
+                    <input class="form-control" type="file" id="licencia_back" accept="image/png, image/jpeg" (change)="foto($event.target.files, 5)">
                 </div>
                 <div style="padding: 20px;"></div>
             </form>
@@ -52,7 +57,7 @@
             <form class="card-model" style="right: -5%;">
                 <h3 class="title title-model">Registro de Usuarios</h3>
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control" id="numeros" placeholder="">
+                    <input type="text" class="form-control" id="numeros" placeholder="" minlength="16">
                     <label for="floatingInput">16 Numeros</label>
                 </div>
                 <div class="form-floating mb-4">
@@ -60,61 +65,16 @@
                     <label for="floatingInput">Nombre</label>
                 </div>
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control" id="cvv" placeholder="">
+                    <input type="text" class="form-control" id="cvv" placeholder="" minlength="3">
                     <label for="floatingInput">CVV</label>
                 </div>
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control" id="expired_data" placeholder="">
+                    <input type="text" class="form-control" id="expired_data" placeholder="" minlength=5>
                     <label for="floatingInput">MM/YY</label>
                 </div>
                 <div style="padding: 20px;"></div>
             </form>
 
-            <!--div class="col-md-4">
-                    <form class="card-model">
-                        <h3 class="title title-model">Registro de Usuarios</h3>
-                        <label>Telefono</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input type="text" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Fotografía Delante</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input name="name" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Fotografía Trasera</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input name="email" type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Licencia</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <div style="padding: 20px;"></div>
-                    </form>
-                </div>
-
-                <div class="col-md-4">
-                    <form class="card-model">
-                        <h3 class="title title-model">Registro de Usuarios</h3>
-                        <label>I</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input name="name" type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Correo</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input name="email" type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Contraseña</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <label>Telefono</label>
-                        <div class="input-group flex-nowrap input-model">
-                            <input type="text" class="form-control" placeholder="Telefono" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                        <div style="padding: 20px;"></div>
-                    </form>
-                </div-->
         </div>
     </div>
 </div>
