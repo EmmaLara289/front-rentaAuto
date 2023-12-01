@@ -17,16 +17,34 @@ export class RegisterComponent implements OnInit {
     id_front: any;
     licencia: any;
     profile_pic: any;
+    user_telefono: any;
+    user_card: any;
+    user_cvv: any;
+    user_fecha_vencimiento: any;
 
   constructor(
     private _userService : UserService,
     private _router: Router,
   ) { 
-    this.user = new User(1, '', '', '', '', 1);
+    this.user = new User(1, '', '', '', '', 1, "", "", "", "");
   }
 
   ngOnInit(){
 
+  }
+
+  registrerUser(){
+    this._userService.register(this.user.name, this.user.email, this.user.password, this.user.telefono, this.id_front, this.id_back, this.licencia, this.profile_pic, this.user.card, this.user.cvv, this.user.fecha_vencimiento).subscribe((response)=>{
+      console.log("ola");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500        
+      });
+      this._router.navigate(['/login']);
+    });
   }
 
   foto(files: FileList, number: number){
@@ -57,7 +75,7 @@ export class RegisterComponent implements OnInit {
         console.log(this.id_back);
         break;
       case 4:
-        this.licencia = files.item,(0);
+        this.licencia = files.item(0);
         console.log(this.licencia);
         break;
       default: 

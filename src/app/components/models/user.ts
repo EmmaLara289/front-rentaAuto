@@ -8,6 +8,10 @@ export class User {
         public password: string,
         public password_repeat: string,
         public key_role: number,
+        public telefono: string,
+        public card: string,
+        public fecha_vencimiento: string,
+        public cvv: string,
 
 
     ) { }

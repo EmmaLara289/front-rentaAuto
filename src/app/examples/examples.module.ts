@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CatComponent } from './cat/cat.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { CatComponent } from './cat/cat.component';
         LandingComponent,
         SignupComponent,
         ProfileComponent,
-        CatComponent
+        CatComponent, 
+        RegisterComponent
     ]
 })
 export class ExamplesModule { }
