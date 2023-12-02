@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
     user_card: any;
     user_cvv: any;
     user_fecha_vencimiento: any;
+    register = 1;
 
   constructor(
     private _userService : UserService,
