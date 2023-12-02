@@ -9,27 +9,27 @@
                             <mat-card-content>
                                 <form class="example-form">
 
-                                    <mat-form-field class="mb-4 example-full-width">
+                                    <mat-form-field class="mb-4" style="width: 100%;">
                                         <mat-label>Nombre</mat-label>
                                         <input matInput name="name" #name="ngModel" [(ngModel)]="user.name" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" placeholder="">
                                     </mat-form-field>
 
-                                    <mat-form-field class="mb-4 example-full-width">
+                                    <mat-form-field class="mb-4" style="width: 100%;">
                                         <mat-label>Correo</mat-label>
                                         <input matInput name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}" type="email" class="form-control" id="email" placeholder="">
                                     </mat-form-field>
 
-                                    <mat-form-field class="mb-4 example-full-width">
+                                    <mat-form-field class="mb-4" style="width: 100%;">
                                         <mat-label>Contraseña</mat-label>
                                         <input matInput name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}" type="password" class="form-control" id="password" placeholder="">
                                     </mat-form-field>
 
-                                    <mat-form-field class="mb-4 example-full-width">
+                                    <mat-form-field class="mb-4" style="width: 100%;">
                                         <mat-label>Verifique Contraseña</mat-label>
                                         <input matInput name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}" type="password" class="form-control" id="password-repeat" placeholder="">
                                     </mat-form-field>
 
-                                    <mat-form-field class="mb-4 example-full-width">
+                                    <mat-form-field class="mb-4" style="width: 100%;">
                                         <mat-label>Telefono</mat-label>
                                         <input matInput name="telefono" #telefono="ngModel" [(ngModel)]="user.telefono" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" placeholder="">
                                     </mat-form-field>
@@ -72,22 +72,22 @@
                 <div *ngIf="register === 3" class="col-md-4">
                     <div class="card-model">
                         <h3 class="title title-model">Registro de Usuarios</h3>
-                        <mat-form-field class="mb-4 example-full-width">
+                        <mat-form-field class="mb-4" style="width: 100%;">
                             <mat-label>Favorite food</mat-label>
                             <input matInput name="card" #card="ngModel" [(ngModel)]="user.card" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" id="numeros" placeholder="" minlength="16">
                             <label for="floatingInput">16 Numeros</label>
                         </mat-form-field>
-                        <mat-form-field class="mb-4 example-full-width">
+                        <mat-form-field class="mb-4" style="width: 100%;">
                             <mat-label>Favorite food</mat-label>
                             <input matInput type="text" class="form-control" id="name_card" placeholder="">
                             <label for="floatingInput">Nombre</label>
                         </mat-form-field>
-                        <mat-form-field class="mb-4 example-full-width">
+                        <mat-form-field class="mb-4" style="width: 100%;">
                             <mat-label>Favorite food</mat-label>
                             <input matInput name="cvv" #cvv="ngModel" [(ngModel)]="user.cvv" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" id="cvv" placeholder="" minlength="3">
                             <label for="floatingInput">CVV</label>
                         </mat-form-field>
-                        <mat-form-field class="mb-4 example-full-width">
+                        <mat-form-field class="mb-4" style="width: 100%;">
                             <mat-label>Favorite food</mat-label>
                             <input matInput name="fecha_vencimiento" #fecha_vencimiento="ngModel" [(ngModel)]="user.fecha_vencimiento" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" id="expired_data" placeholder="" minlength=5>
                             <label for="floatingInput">MM/YY</label>
