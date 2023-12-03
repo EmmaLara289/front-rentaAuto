@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CatComponent } from './cat/cat.component';
 import { RegisterComponent } from './register/register.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { RegisterComponent } from './register/register.component';
         NgbModule,
         MatButtonModule,
         MatInputModule,
-        MatCardModule
+        MatCardModule,
+        MatIconModule
     ],
     declarations: [
         LoginComponent,
