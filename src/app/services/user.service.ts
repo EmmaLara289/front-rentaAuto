@@ -40,5 +40,9 @@ export class UserService {
     return this._http.post(global.url + 'createUser', formData);
   }
 
+  public getCat():Observable<any>{
+    return this._http.get(global.url + 'getVehicleData');
+  }
+
   
 }
