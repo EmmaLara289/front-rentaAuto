@@ -1,3 +1,21 @@
 .ImputBorder {
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+}
+
+.boton-ingresar{
+
+    background-color: rgb(22, 37, 240);
+    border-color: rgb(22, 37, 240);
+    transition: box-shadow 0.3s, background-color 0.1s;
+
+}
+.boton-ingresar:hover{
+    box-shadow: 0px 0px 11px 0px rgb(114, 204, 245);
+}
+.boton-ingresar:active{
+    background-color: rgb(0, 102, 255);
+    border-color: rgb(0, 102, 255);
 }
