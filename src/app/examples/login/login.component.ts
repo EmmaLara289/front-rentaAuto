@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       response => {
         if (response.status != 'error') {
          console.log("Funciona");
-         this._router.navigate(['/home']);
+         this._router.navigate(['/cat']);
         }
         /*
         setTimeout(function() {

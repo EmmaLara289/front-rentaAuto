@@ -44,5 +44,11 @@ export class UserService {
     return this._http.get(global.url + 'getVehicleData');
   }
 
+  public getProcess(id_user: number):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('id_user', id_user);
+    return this._http.get(global.url + 'getProcess', {params: params});
+  }
+
   
 }

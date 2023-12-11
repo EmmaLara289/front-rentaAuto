@@ -11,6 +11,7 @@ import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.compo
 import { LoginComponent } from './examples/login/login.component';
 import { RegisterComponent } from './examples/register/register.component';
 import { CatComponent } from './examples/cat/cat.component';
+import { ReservedComponent } from './examples/reserved/reserved.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -21,7 +22,8 @@ const routes: Routes =[
     { path: 'nucleoicons',      component: NucleoiconsComponent },
     { path: 'login',            component: LoginComponent},
     { path: 'register',         component: RegisterComponent},
-    { path: 'cat',              component: CatComponent}
+    { path: 'cat',              component: CatComponent},
+    { path: 'reserved',         component: ReservedComponent}
 ];
 
 @NgModule({

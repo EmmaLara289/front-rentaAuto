@@ -1,0 +1,30 @@
+<div class="wrapper">
+
+    <div style="padding: 50px; background-color: black;">
+
+    </div>
+
+    <div class="main" style="background-color: rgb(199, 199, 255); padding-top: 20px; min-height: 845px; max-width: 1930px;">
+        <div class="filter"></div>
+        <div class="row" *ngFor="let item of reserved">
+            <mat-card style="z-index: 1; text-align: center; width: 700px; height: 200px;">
+                <mat-card-content>
+                    <mat-card-title style="text-align: center;">{{item.data.nombre_auto}}</mat-card-title>
+                    <mat-card-subtitle style="text-align: center; padding-bottom: 5px;">{{item.data.modelo}}</mat-card-subtitle>
+
+                    <img src="{{item.url}}" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
+
+                    <button mat-raised-button color="primary" (click)="openModalVehicle (item, vehiclesTemplate)">Primary</button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+
+
+    <!-- En tu componente que contiene el modal -->
+
+
+
+
+</div>
