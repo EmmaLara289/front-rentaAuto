@@ -14,14 +14,12 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReservedComponent } from './examples/reserved/reserved.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ReservedComponent
   ],
   imports: [
     BrowserModule,

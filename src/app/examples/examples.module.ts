@@ -12,6 +12,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CatComponent } from './cat/cat.component';
 import { RegisterComponent } from './register/register.component';
+import { ReservedComponent } from './reserved/reserved.component';
+
 import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
@@ -30,7 +32,8 @@ import {MatIconModule} from '@angular/material/icon';
         SignupComponent,
         ProfileComponent,
         CatComponent, 
-        RegisterComponent
+        RegisterComponent,
+        ReservedComponent
     ]
 })
 export class ExamplesModule { }
