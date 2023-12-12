@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./reserved.component.scss']
 })
 export class ReservedComponent implements OnInit {
-  user: User;
+  user: any;
   reserved: any;
 
   constructor(
@@ -23,7 +23,13 @@ export class ReservedComponent implements OnInit {
 
   ngOnInit(){
 
-    this._userService.getProcess(1).subscribe((response) => {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    //this.user = this.user.user;
+    //console.log(this.user);
+    //console.log(this.user.user.id_user);
+    
+
+    this._userService.getProcess(this.user.user.id_user).subscribe((response) => {
       this.reserved = response;
       console.log(response);
     });

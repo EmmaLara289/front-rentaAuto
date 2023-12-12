@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -9,14 +10,20 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+    user = JSON.parse(localStorage.getItem('user'));
+    login = JSON.parse(localStorage.getItem('login'));
 
-    constructor(public location: Location, private element : ElementRef) {
+
+    constructor(public location: Location, private element : ElementRef, private _router: Router) {
         this.sidebarVisible = false;
+        
     }
 
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+
+        console.log(localStorage.getItem('login'));
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -71,4 +78,34 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
+
+    isReserved() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        console.log(titlee);
+        if(titlee.charAt(0) === '#'){
+            titlee = titlee.slice( 1 );
+        }
+          if( titlee === '/reserved' ) {
+              return true;
+          }
+          else {
+              return false;
+          }
+      }
+
+    routeReservate(){
+        this._router.navigate(['/reserved']);
+    }
+
+    routeLogin(){
+        this._router.navigate(['/login']);
+    }
+
+    logOut(){
+        localStorage.clear();
+        localStorage.removeItem('user');
+        localStorage.removeItem('login');
+        location.reload();
+    }
+
 }

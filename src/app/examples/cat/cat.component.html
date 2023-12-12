@@ -4,24 +4,21 @@
 
     </div>
 
-    <div class="main" style="background-color: rgb(199, 199, 255); padding-top: 20px;">
-        <div class="filter"></div>
-        <div class="row mx-auto" style="width: 1800px; height: auto; padding-bottom: 20px;">
-            <div *ngFor="let item of catalogo" class="d-flex justify-content-center align-items-center" style="width: 350px; padding-bottom: 10px;">
-                <mat-card class="col-md-8" style="z-index: 1; text-align: center;">
-                    <mat-card-content>
-                        <mat-card-title style="text-align: center;">{{item.data.nombre_auto}}</mat-card-title>
-                        <mat-card-subtitle style="text-align: center; padding-bottom: 5px;">{{item.data.modelo}}</mat-card-subtitle>
-
-                        <img src="{{item.url}}" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
-
-                        <button mat-raised-button color="primary" (click)="openModalVehicle (item, vehiclesTemplate)">Primary</button>
-                    </mat-card-content>
-                </mat-card>
-
-            </div>
+    <div class="d-flex flex-wrap justify-content-around align-items-stretch main" style="background-color: rgb(199, 199, 255); margin-top: 20px;">
+        <div *ngFor="let item of catalogo" class="col-md-2" style="padding-bottom: 10px;">
+            <mat-card style="z-index: 1; text-align: center; width: 300px; height: 300px; display: flex; flex-direction: column;">
+                <mat-card-content style="flex: 1;">
+                    <!-- Contenido del mat-card -->
+                    <mat-card-title style="text-align: center;">{{item.data.nombre_auto}}</mat-card-title>
+                    <mat-card-subtitle style="text-align: center; padding-bottom: 5px;">{{item.data.modelo}}</mat-card-subtitle>
+                    <img src="{{item.url}}" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
+                </mat-card-content>
+                <!-- Botón al final del mat-card -->
+                <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
+            </mat-card>
         </div>
     </div>
+
 
     <!-- En tu componente que contiene el modal -->
     <ng-template #vehiclesTemplate>

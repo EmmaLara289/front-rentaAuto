@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'app/components/models/user';
 import { UserService } from 'app/services/user.service';
 import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,11 +20,16 @@ export class LoginComponent implements OnInit {
   constructor(
     private _userService : UserService,
     private _router: Router,
+    private location: Location
   ) { 
     this.user = new User(1, '', '', '', '', 1, "", "", "", "");
   }
 
   ngOnInit(){
+
+    if(localStorage.getItem('login') !== null && localStorage.getItem('user')){
+      this._router.navigate(['/cat']);
+    }
 
   }
 
@@ -31,8 +37,13 @@ export class LoginComponent implements OnInit {
     this._userService.login(this.user.email, this.user.password).subscribe(
       response => {
         if (response.status != 'error') {
-         console.log("Funciona");
-         this._router.navigate(['/cat']);
+         //console.log("Funciona");
+        
+        localStorage.setItem('user', JSON.stringify(response));
+        localStorage.setItem('login', JSON.stringify(true));
+        console.log(response);
+        location.reload();
+
         }
         /*
         setTimeout(function() {
