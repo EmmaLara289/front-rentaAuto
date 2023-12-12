@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -15,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReservedComponent } from './reserved/reserved.component';
 
 import {MatIconModule} from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
     imports: [
@@ -24,7 +26,9 @@ import {MatIconModule} from '@angular/material/icon';
         MatButtonModule,
         MatInputModule,
         MatCardModule,
-        MatIconModule
+        MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     declarations: [
         LoginComponent,

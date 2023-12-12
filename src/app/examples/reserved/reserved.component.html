@@ -1,12 +1,10 @@
 <div class="wrapper">
 
-    <div style="padding: 50px; background-color: black;">
+    <div style="padding: 20px; background-color: rgb(199, 199, 255);"></div>
 
-    </div>
-
-    <div class="main" style="background-color: rgb(199, 199, 255); padding-top: 20px; min-height: 750px;">
+    <div class="main" style="background-color: rgb(199, 199, 255); min-height: 750px;">
         <div class="filter"></div>
-        <div *ngFor="let item of reserved" class="row" style="width: 600px; min-height: 300px; padding-left: 30px; padding-bottom: 60px;">
+        <div *ngFor="let item of reserved" class="row" style="width: 600px; min-height: 300px; padding-left: 30px; padding-bottom: 10px;">
             <mat-card style="z-index: 1; width:1400px;">
                 <mat-card-content>
                     <mat-card-title style="text-align: center;">{{item.data.nombre_auto}}</mat-card-title>
