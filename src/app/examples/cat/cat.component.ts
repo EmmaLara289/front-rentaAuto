@@ -4,8 +4,6 @@ import { UserService } from 'app/services/user.service';
 import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 import {FormGroup, FormControl} from '@angular/forms';
 import Swal from 'sweetalert2';
-import { environment } from 'environments/environment';
-
 
 @Component({
   selector: 'app-cat',
@@ -22,14 +20,6 @@ export class CatComponent implements OnInit {
   catalogo: any;
   vehicleModalData: any;
   dias: number;
-
-  zoom = 15;
-  lat = 37.7749; // Latitud de San Francisco como ejemplo
-  lng = -122.4194; // Longitud de San Francisco como ejemplo
-
-  // Clave de la API de Google Maps
-  googleMapsApiKey = environment.googleMapsApiKey;
-  
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
