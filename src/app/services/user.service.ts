@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { global } from './global';
+import { param } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,23 @@ export class UserService {
     let params = new HttpParams();
     params = params.set('id_user', id_user);
     return this._http.get(global.url + 'getProcess', {params: params});
+  }
+
+  public getDays(fecha_inicio: any, fecha_final: any):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('fecha_inicio', fecha_inicio);
+    params = params.set('fecha_final', fecha_final);
+    return this._http.get(global.url + 'calcularDias', { params:params });
+  }
+
+  public getPasswordRecovery(email:string):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('email', email);
+    return this._http.get(global.url + 'recoveryUser', { params:params });
+  }
+
+  public getModels():Observable<any>{
+    return this._http.get(global.url + 'getFiltersModelos');
   }
 
   

@@ -15,6 +15,14 @@ import { ComponentsModule } from './components/components.module';
 import { ExamplesModule } from './examples/examples.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule}  from '@angular/material/icon';
+import { JsonPipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -31,7 +39,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ExamplesModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatIconModule,
+    JsonPipe,
+    MatFormFieldModule,
+    MatDatepickerModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

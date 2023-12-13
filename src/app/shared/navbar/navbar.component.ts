@@ -81,7 +81,7 @@ export class NavbarComponent implements OnInit {
 
     isReserved() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        console.log(titlee);
+        //console.log(titlee);
         if(titlee.charAt(0) === '#'){
             titlee = titlee.slice( 1 );
         }

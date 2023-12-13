@@ -50,3 +50,7 @@
     height: 700px;
     /* Altura completa de la pantalla */
 }
+
+.mat-datepicker-content {
+    z-index: 1000;
+}
