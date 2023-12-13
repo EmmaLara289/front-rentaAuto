@@ -4,10 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                    <div class="card card-register">
-                        <h2 class="title" style = "color: white;">INICIAR SESION</h2>
+                    <div class="card card-register" style = "background-color: white;">
+                        <h2 class="title" style = "color: black;">INICIAR SESION</h2>
                         <form class="col-md5-" (ngSubmit)="login()">
-                            <label style = "color: black; background-color: white; border-top-right-radius: 10px; border-top-left-radius: 10px; width: 30%; padding: 3%; padding-bottom: 1%; text-align: center;">CORREO</label>
                             <!--div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
@@ -18,11 +17,15 @@
                                 <input name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false">
                             </div-->
 
-                            <div class="input-group flex-nowrap ImputBorder" style = "margin-top: -3%;">
+                            <!--div class="input-group flex-nowrap ImputBorder" style = "margin-top: -3%;">
                                 <input name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="addon-wrapping">
-                            </div>
+                            </div-->
 
-                            <label style = "color: black; background-color: white; border-top-right-radius: 10px; border-top-left-radius: 10px; width: 45%; padding: 3%; padding-bottom: 1%; text-align: center;">CONTRASEÑA</label>
+                                <mat-form-field style = "width: 100%; margin-top: 5%;">
+                                  <mat-label>Correo</mat-label>
+                                  <input matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="user.email" required minlength="5" [ngModelOptions]="{standasalone: true}" type="text" class="form-control">
+                                </mat-form-field>
+
                             <!--div class="input-group form-group-no-border ImputBorder" [ngClass]="{'input-group-focus':focus1===true}">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
@@ -32,17 +35,23 @@
                                 <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}">
                             </div-->
 
-                            <div class="input-group flex-nowrap ImputBorder" style = "margin-top: -3%;">
+                            <!--div class="input-group flex-nowrap ImputBorder" style = "margin-top: -3%;">
                                 <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="addon-wrapping">
 
+                            </div-->
+
+                                <mat-form-field style = "width: 100%; padding-top: -7%;">
+                                  <mat-label>Contraseña</mat-label>
+                                  <input matInput placeholder="Password" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" [ngModelOptions]="{standasalone: true}" class="form-control">
+                                </mat-form-field>
+
+                            <div class="forgot" style = "padding-top: 10%; margin-bottom: -9%;">
+                                <label style = "color: black; font-weight: bold;">Olvido su contraseña? </label>
+                                <a href="#" style="font-weight: bold;"><u> Recuperela </u></a>
                             </div>
 
                             <button class="btn btn-block btn-round boton-ingresar">Ingresar</button>
                         </form>
-                        <div class="forgot">
-                            <label style = "color: white; font-weight: bold;">Olvido su contraseña? </label>
-                            <a href="#" style="color: white; font-weight: bold;"> Recuperela</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -52,9 +61,3 @@
         </div>
     </div>
 </div>
-
-<footer>
-
-   <h3 style = "text-align: center; margin-top: 1%;">GRACIAS POR VISITARNOS</h3>
-
-</footer>
