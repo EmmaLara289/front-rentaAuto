@@ -7,8 +7,8 @@
         <div *ngFor="let item of reserved" class="row" style="width: 600px; min-height: 300px; padding-left: 30px; padding-bottom: 10px;">
             <mat-card style="z-index: 1; width:1400px;">
                 <mat-card-content>
-                    <mat-card-title style="text-align: center;">{{item.data.nombre_auto}}</mat-card-title>
-                    <mat-card-subtitle style="text-align: center; padding-bottom: 5px;">{{item.data.modelo}}</mat-card-subtitle>
+                    <mat-card-title style="text-align: center;">{{item.renta.nombre_auto}}</mat-card-title>
+                    <mat-card-subtitle style="text-align: center; padding-bottom: 5px;">{{item.renta.modelo}}</mat-card-subtitle>
                     <img src="{{item.url}}" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
 
                     <button mat-raised-button color="primary" (click)="openModalVehicle (item, vehiclesTemplate)">Detalles</button>

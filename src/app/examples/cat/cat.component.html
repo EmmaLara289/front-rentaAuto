@@ -10,14 +10,14 @@
 
             <mat-form-field class="example-form-field pr-md-3 pl-md-2">
                 <mat-label>Seleccione un rango</mat-label>
-                <mat-date-range-input [formGroup]="range" [rangePicker]="rangePicker">
+                <mat-date-range-input [formGroup]="range" [rangePicker]="rangePicker" [min]="fechaActual">
                     <input matStartDate formControlName="start" placeholder="Inicio">
                     <input matEndDate formControlName="end" placeholder="Fin">
                 </mat-date-range-input>
                 <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
                 <mat-date-range-picker #rangePicker>
                     <mat-date-range-picker-actions>
-                        <button mat-button matDateRangePickerCancel>Cancelar</button>
+                        <button mat-button matDateRangePickerCancel (click)="resetDates()">Cancelar</button>
                         <button mat-raised-button color="primary" matDateRangePickerApply (click)="consoleLog()">Aplicar</button>
                     </mat-date-range-picker-actions>
                 </mat-date-range-picker>
@@ -29,18 +29,43 @@
                 <input *ngIf="dias !== undefined" matInput [value]="dias" readonly style="width: 80px;">
             </mat-form-field>
 
-            <mat-form-field>
+            <!--mat-form-field>
                 <mat-label>Tipo de Auto</mat-label>
                 <mat-select [(ngModel)]="selectedModel" name="food" (selectionChange)="selectModel($event)">
                     <mat-option *ngFor="let model of models" [value]="model">
                         {{model}}
                     </mat-option>
                 </mat-select>
+            </mat-form-field-->
+
+            <mat-form-field>
+                <mat-label>Tipo de Auto</mat-label>
+                <mat-select [(ngModel)]="modelSelected" [disabled]="modalCat" (selectionChange)="selectModel($event)">
+                    <mat-option value="undefined">Todos</mat-option>
+                    <mat-option *ngFor="let model of models" value="{{model}}">{{model}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Color de Auto</mat-label>
+                <mat-select [(ngModel)]="selectedColor" [disabled]="!modelSelected && modalCat" (selectionChange)="selectColor($event)">
+                    <mat-option value="undefined">Todos</mat-option>
+                    <mat-option *ngFor="let color of colores" value="{{color}}">{{color}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Cantidad de pasajeros</mat-label>
+                <mat-select [(ngModel)]="selectedPasajero" [disabled]="!modelSelected && modalCat" (selectionChange)="selectPasajero($event)">
+                    <mat-option value="undefined">Todos</mat-option>
+                    <mat-option *ngFor="let pasajero of pasajeros" value="{{pasajero}}">{{pasajero}}</mat-option>
+                </mat-select>
             </mat-form-field>
             <!--p>Selected range: {{range.value | json}}</p-->
 
         </div>
-        <div class="d-flex flex-wrap justify-content-around align-items-stretch" style="background-color: rgb(199, 199, 255);">
+        <div *ngIf="!modalCat" class="d-flex flex-wrap justify-content-around align-items-stretch" style="background-color: rgb(199, 199, 255);">
+
             <!--div *ngFor="let item of catalogo" class="col-md-2" style="padding-bottom: 10px; margin-right: 10px;">
                 <mat-card style="z-index: 1; text-align: center; width: 300px; height: 400px; display: flex; flex-direction: column;">
                     <mat-card-content style="flex: 1;">
@@ -53,35 +78,37 @@
             </div-->
 
             <div *ngFor="let item of catalogo" class="col-md-2" style="padding-bottom: 10px; margin-right: 10px;">
-                <mat-card style="z-index: 1; text-align: center; width: 300px; height: 450px; display: flex; flex-direction: column;">
+                <mat-card style="z-index: 1; text-align: center; width: 300px; height: 480px; display: flex; flex-direction: column;">
                     <mat-card-content style="flex: 1;">
                         <!-- Contenido del mat-card -->
                         <mat-card-title style="text-align: left;">{{item.data.nombre_auto}}</mat-card-title>
                         <mat-card-subtitle style="text-align: left; padding-bottom: 20px;">{{item.data.modelo}}</mat-card-subtitle>
                         <img src="{{item.url}}" alt="" style="width: 160px; height: 111px; padding-bottom: 5px;">
-                        <mat-card-subtitle style="text-align: center; margin-top: 2%; color: black;">2 Pasajeros</mat-card-subtitle>
-                        <mat-card-subtitle style="text-align: center; margin-top: -4%; color: black; padding-bottom: 5%;">Standar</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: center; margin-top: 2%; color: black;">{{item.data.pasajeros}} Pasajeros</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: center; margin-top: -4%; color: black; padding-bottom: 5%;">Transmisión: {{item.data.transmicion}}</mat-card-subtitle>
 
                         <div style="padding: 0; display: flex; border-top: 1px solid; border-bottom: 1px solid; padding: 10px; border-color: rgb(180, 180, 180);">
 
-                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> 2 Maletas </span>
-                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> A/C </span>
-                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> Air bag </span>
-                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> 4 Puertas </span>
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: burlywood"> {{item.data.equipaje}} Maletas <mat-icon>work</mat-icon> </span>
+                            <span *ngIf="item.data.a_c === 0" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: red;">A/C <mat-icon>ac_unit</mat-icon></span>
+                            <span *ngIf="item.data.a_c === 1" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: green;">A/C <mat-icon>ac_unit</mat-icon></span>
+                            <span *ngIf="item.data.airbag === 0" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: red;">Air bag <mat-icon>airline_seat_recline_extra</mat-icon></span>
+                            <span *ngIf="item.data.airbag === 1" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: green;">Air bag <mat-icon>airline_seat_recline_extra</mat-icon></span>
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> {{item.data.puertas}} Puertas <mat-icon>door_sliding</mat-icon></span>
 
                         </div>
 
                     </mat-card-content>
                     <!-- Botón al final del mat-card -->
-                    <button mat-raised-button color="primary" style="margin-bottom: 5px;">Reservar</button>
-                    <button mat-raised-button color="primary" (click)="openModalVehicle(1, vehiclesModelo)">Detalles</button>
+                    <button mat-raised-button color="primary" style="margin-bottom: 5px;" (click)="openModalApart(item, apartVehicle)">Reservar</button>
+                    <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
                 </mat-card>
             </div>
 
-            <div class="col-md-2" style="padding-bottom: 10px; padding-top: 10px;">
+            <!--div class="col-md-2" style="padding-bottom: 10px; padding-top: 10px;">
                 <mat-card style="z-index: 1; text-align: center; width: 400px; height: auto; display: flex; flex-direction: column;">
                     <mat-card-content style="flex: 1;">
-                        <!-- Contenido del mat-card -->
+                        
                         <mat-card-title style="text-align: left;">Caballo</mat-card-title>
                         <mat-card-subtitle style="text-align: left; padding-bottom: 20px;">Vehiculo economico</mat-card-subtitle>
                         <img src="https://concepto.de/wp-content/uploads/2021/07/caballos-e1626738224231.jpg" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
@@ -94,13 +121,63 @@
                             <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> 4 Puertas </span>
                         </div>
                     </mat-card-content>
-                    <!-- Botón al final del mat-card -->
+                    
                     <button mat-raised-button color="primary" style="margin-bottom: 5px;">Reservar</button>
                     <button mat-raised-button color="primary" (click)="openModalVehicle(1, vehiclesModelo)">Detalles</button>
                 </mat-card>
+            </div-->
+
+            <div class="card">
+                <h1>Ubicación de entrega y regreso</h1>
+                <img src="https://cdn.discordapp.com/attachments/945873120798072882/1184747844142387230/image.png?ex=658d1969&is=657aa469&hm=4a4455e6b9bb838794e1eee572056ebba862ad096b045100277647b59e21409c&" style="margin-bottom: 5%; border-radius: 10px;">
+                <a href="https://www.google.com/maps/dir/24.7859918,-107.3494046/aeropuerto+culiacan+google+mpas/@24.7702168,-107.4905631,14.5z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x86bcd02a25d3dd2b:0xa48f8625f0e39427!2m2!1d-107.4768322!2d24.7654447?entry=ttu" style="font-size: xx-large;"
+                    target="_blank"><button>Google maps</button></a>
             </div>
+        </div>
 
+        <div *ngIf="modalCat" class="d-flex flex-wrap justify-content-around align-items-stretch" style="background-color: rgb(199, 199, 255);">
 
+            <!--div *ngFor="let item of catalogo" class="col-md-2" style="padding-bottom: 10px; margin-right: 10px;">
+                <mat-card style="z-index: 1; text-align: center; width: 300px; height: 400px; display: flex; flex-direction: column;">
+                    <mat-card-content style="flex: 1;">
+                        <mat-card-title style="text-align: center;">{{item.data.nombre_auto}}</mat-card-title>
+                        <mat-card-subtitle style="text-align: center; padding-bottom: 5px;">{{item.data.modelo}}</mat-card-subtitle>
+                        <img src="{{item.url}}" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
+                    </mat-card-content>
+                    <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
+                </mat-card>
+            </div-->
+            <div class="row">
+                <p>Por favor, seleccione primero un rango de fechas</p>
+            </div>
+            <!--div class="col-md-2" style="padding-bottom: 10px; padding-top: 10px;">
+                <mat-card style="z-index: 1; text-align: center; width: 400px; height: auto; display: flex; flex-direction: column;">
+                    <mat-card-content style="flex: 1;">
+                        
+                        <mat-card-title style="text-align: left;">Caballo</mat-card-title>
+                        <mat-card-subtitle style="text-align: left; padding-bottom: 20px;">Vehiculo economico</mat-card-subtitle>
+                        <img src="https://concepto.de/wp-content/uploads/2021/07/caballos-e1626738224231.jpg" alt="" style="width: 60%; height: auto; padding-bottom: 5px;">
+                        <mat-card-subtitle style="text-align: center; margin-top: 2%; color: black;">2 Pasajeros</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: center; margin-top: -4%; color: black; padding-bottom: 5%;">Standar</mat-card-subtitle>
+                        <div style="padding: 0; display: flex; border-top: 1px solid; border-bottom: 1px solid; padding: 10px; border-color: rgb(180, 180, 180);">
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> 2 Maletas </span>
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> A/C </span>
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> Air bag </span>
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> 4 Puertas </span>
+                        </div>
+                    </mat-card-content>
+                    
+                    <button mat-raised-button color="primary" style="margin-bottom: 5px;">Reservar</button>
+                    <button mat-raised-button color="primary" (click)="openModalVehicle(1, vehiclesModelo)">Detalles</button>
+                </mat-card>
+            </div-->
+
+            <div class="card">
+                <h1>Ubicación de entrega y regreso</h1>
+                <img src="https://cdn.discordapp.com/attachments/945873120798072882/1184747844142387230/image.png?ex=658d1969&is=657aa469&hm=4a4455e6b9bb838794e1eee572056ebba862ad096b045100277647b59e21409c&" style="margin-bottom: 5%; border-radius: 10px;">
+                <a href="https://www.google.com/maps/dir/24.7859918,-107.3494046/aeropuerto+culiacan+google+mpas/@24.7702168,-107.4905631,14.5z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x86bcd02a25d3dd2b:0xa48f8625f0e39427!2m2!1d-107.4768322!2d24.7654447?entry=ttu" style="font-size: xx-large;"
+                    target="_blank"><button>Google maps</button></a>
+            </div>
         </div>
 
 
@@ -108,7 +185,7 @@
 
 
     <!-- En tu componente que contiene el modal -->
-    <ng-template #vehiclesTemplate styles="z-index: 999;">
+    <ng-template #vehiclesTemplateFree styles="z-index: 999;">
 
         <div class="modal-header">
             <h2 class="modal-title text-center">{{vehicleModalData.data.nombre_auto}}</h2>
@@ -162,6 +239,82 @@
                         <p><b>Descripcion:</b></p>
                         <p><b>Renta:</b></p>
                         <p><b>Precio:</b></p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button mat-raised-button color="primary" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;">Reservar</button>
+        </div>
+
+    </ng-template>
+
+    <ng-template #vehiclesTemplate>
+
+        <div class="modal-header" style="background-color: rgb(63, 81, 181);">
+            <h1 class="modal-title text-center" style="color: white; margin-top: 2%;"> {{vehicleModalData.data.nombre_auto}}</h1>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{vehicleModalData.url}}" alt="" style="width: 100%; height: auto; padding-bottom: 5px;">
+                </div>
+                <div class="col-md-6" style="display: flex;">
+                    <div style="flex: 1; border-right: 1px rgb(179, 179, 179) solid;">
+
+                        <p><b><strong>Modelo:</strong></b> {{vehicleModalData.data.modelo}}</p>
+                        <p><b><strong>Color:</strong></b> {{vehicleModalData.data.color}}</p>
+                        <p><b><strong>Placas:</strong></b> {{vehicleModalData.data.placas}}</p>
+                        <p><b><strong>Año:</strong></b> {{vehicleModalData.data.ano}}</p>
+
+                    </div>
+                    <div style="flex: 1; padding-left: 5px;">
+
+                        <p><b><strong>Descripcion:</strong></b> {{vehicleModalData.data.descripcion}}</p>
+                        <p><b><strong>Renta:</strong></b> {{vehicleModalData.data.precio_renta}}</p>
+                        <p><b><strong>Precio:</strong></b> {{precio}}</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button mat-raised-button color="primary" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;">Reservar</button>
+        </div>
+
+    </ng-template>
+
+    <ng-template #apartVehicle>
+
+        <div class="modal-header" style="background-color: rgb(63, 81, 181);">
+            <h1 class="modal-title text-center" style="color: white; margin-top: 2%;"> {{vehicleModalData.data.nombre_auto}}</h1>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{vehicleModalData.url}}" alt="" style="width: 100%; height: auto; padding-bottom: 5px;">
+                </div>
+                <div class="col-md-6" style="display: flex;">
+                    <div style="flex: 1; border-right: 1px rgb(179, 179, 179) solid;">
+
+                        <p><b><strong>Modelo:</strong></b> {{vehicleModalData.data.modelo}}</p>
+                        <p><b><strong>Color:</strong></b> {{vehicleModalData.data.color}}</p>
+                        <p><b><strong>Placas:</strong></b> {{vehicleModalData.data.placas}}</p>
+                        <p><b><strong>Año:</strong></b> {{vehicleModalData.data.ano}}</p>
+
+                    </div>
+                    <div style="flex: 1; padding-left: 5px;">
+
+                        <p><b><strong>Descripcion:</strong></b> {{vehicleModalData.data.descripcion}}</p>
+                        <p><b><strong>Renta:</strong></b> {{vehicleModalData.data.precio_renta}}</p>
+                        <p><b><strong>Precio:</strong></b> {{precio}}</p>
 
                     </div>
 

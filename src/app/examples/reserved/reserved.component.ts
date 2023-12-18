@@ -29,7 +29,7 @@ export class ReservedComponent implements OnInit {
     //console.log(this.user.user.id_user);
     
 
-    this._userService.getProcess(this.user.user.id_user).subscribe((response) => {
+    this._userService.checkReserved(this.user.user.id_user).subscribe((response) => {
       this.reserved = response;
       console.log(response);
     });

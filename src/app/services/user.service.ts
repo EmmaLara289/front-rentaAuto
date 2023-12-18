@@ -64,9 +64,59 @@ export class UserService {
     return this._http.get(global.url + 'recoveryUser', { params:params });
   }
 
+  public checkReserved(id_user: number):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('id_user', id_user);
+    return this._http.get(global.url + "checkerRent", { params:params });
+  }
+
+  public calcularRenta(dias: number,id_vehicles: number):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('dias', dias);
+    params = params.set('id_vehicles', id_vehicles);
+    return this._http.get(global.url + "calcularRenta", { params: params});
+  }
+
+  public getPasajeros(modelo:string):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('modelo', modelo);
+    
+    return this._http.get(global.url + 'getFiltersPasajeros', { params: params});
+  }
+
+  public getColores(modelo:string):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('modelo', modelo);
+
+    return this._http.get(global.url + 'getFiltersColors',  { params: params});
+  }
+
   public getModels():Observable<any>{
     return this._http.get(global.url + 'getFiltersModelos');
   }
 
+  public getVehicleData(modelo: string, color: string, pasajeros: string, text: string):Observable<any>{
+    let params = new HttpParams();
+
+    if(modelo !== undefined){
+      params = params.set('modelo', modelo);
+    }
+
+    if(color !== undefined){
+      params = params.set('color', color);
+    }
+
+    if(pasajeros !== undefined){
+      params = params.set('pasajeros', pasajeros);
+    }
+
+    if(text !== undefined){
+      params = params.set('text', text);
+    }
+
+    return this._http.get(global.url + 'getVehicleData',  { params: params});
+  }
   
+
+
 }
