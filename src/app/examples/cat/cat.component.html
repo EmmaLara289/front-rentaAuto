@@ -6,7 +6,7 @@
 
     <div class="main" style="background-color: rgb(199, 199, 255);">
 
-        <div style="background-color: rgb(199, 199, 255); margin-left: 30%; padding-top: 50px; margin-bottom: -50px;">
+        <div *ngIf="modalCat" style="background-color: rgb(199, 199, 255); margin-left: 30%; padding-top: 50px; margin-bottom: -50px;">
             <p style="font-size: x-large; font-weight: bold; color: black;">Por favor, seleccione primero un rango de fechas</p>
         </div>
 
@@ -88,6 +88,7 @@
                         <!-- Contenido del mat-card -->
                         <mat-card-title style="text-align: left;">{{item.data.nombre_auto}}</mat-card-title>
                         <mat-card-subtitle style="text-align: left; padding-bottom: 20px;">{{item.data.modelo}}</mat-card-subtitle>
+                        <p><b><strong>{{item.data.estado_vehicle}}</strong></b></p>
                         <img src="{{item.url}}" alt="" style="width: 160px; height: 111px; padding-bottom: 5px;">
                         <mat-card-subtitle style="text-align: center; margin-top: 2%; color: black;">{{item.data.pasajeros}} Pasajeros</mat-card-subtitle>
                         <mat-card-subtitle style="text-align: center; margin-top: -4%; color: black; padding-bottom: 5%;">Transmisión: {{item.data.transmicion}}</mat-card-subtitle>
@@ -105,7 +106,8 @@
 
                     </mat-card-content>
                     <!-- Botón al final del mat-card -->
-                    <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
+                    <button *ngIf="item.data.id_status === 1" mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
+                    <button *ngIf="item.data.id_status !== 1" mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)" disabled>Detalles</button>
                 </mat-card>
             </div>
 
@@ -131,7 +133,7 @@
                 </mat-card>
             </div-->
 
-            <div class="card">
+            <div class="card col-md-2" style="padding-bottom: 10px; margin-right: 10px;">
                 <h1>Ubicación de entrega y regreso</h1>
                 <img src="https://cdn.discordapp.com/attachments/945873120798072882/1184747844142387230/image.png?ex=658d1969&is=657aa469&hm=4a4455e6b9bb838794e1eee572056ebba862ad096b045100277647b59e21409c&" style="margin-bottom: 5%; border-radius: 10px;">
                 <a href="https://www.google.com/maps/dir/24.7859918,-107.3494046/aeropuerto+culiacan+google+mpas/@24.7702168,-107.4905631,14.5z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x86bcd02a25d3dd2b:0xa48f8625f0e39427!2m2!1d-107.4768322!2d24.7654447?entry=ttu" style="font-size: xx-large;"

@@ -143,6 +143,12 @@ export class UserService {
     return this._http.post(global.url + "regresarReservacion",
     {id_procesos_vehicles:id_procesos_vehicles});
   }
+
+  public getUserData(id_user:number):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('id_user', id_user);
+    return this._http.get(global.url + "getUserData", { params: params});
+  }
   
   
 

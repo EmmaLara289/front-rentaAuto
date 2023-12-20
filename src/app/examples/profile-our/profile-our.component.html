@@ -5,7 +5,7 @@
     </div>
 
     <div class="main" style="background-color: rgb(199, 199, 255);">
-        <div style="padding: 30px; background-color: rgb(199, 199, 255);"></div>
+        <!--div style="padding: 30px; background-color: rgb(199, 199, 255);"></div-->
         <div style="background-color: white; border-radius: 10px; padding-top: 10px; padding-bottom: 30px;">
 
             <h1 style="width: 35%; background-color: rgb(63, 81, 181); text-align: center; color: white; margin-left: 34%; border-radius: 10px; padding: 10px;">Datos de usuario</h1>
@@ -14,22 +14,20 @@
 
                 <div class="contenedor-secundario" style="border-right: 1px solid rgb(196, 196, 196); flex: 1; padding: 10px;">
 
-                    <img src="https://cdn.discordapp.com/attachments/945873120798072882/1185088754550054942/image.png?ex=658e56e8&is=657be1e8&hm=6fd7e83f2cfc81a905c94019b03b67ef810eefc84f83136b87a3d47ae6d19806&" style="height: auto; width: auto; background-color: rgb(179, 179, 179); padding: 5px; margin-right: 20px; border-radius: 10px;">
+                    <img [src]="user_data_files[0].profile_pic" style="height: auto; width: 200px; background-color: rgb(179, 179, 179); padding: 5px; margin-right: 20px; border-radius: 10px;">
                     <button class="cambiar-foto">Cambiar foto</button>
 
                 </div>
 
                 <div class="contenedor-secundario" style="border-right: 1px solid rgb(196, 196, 196); flex: 3; padding-top: 50px; display: block;">
 
-                    <p style="font-weight: bold; font-size: xx-large;">Nombre: <span style="font-size: xx-large; font-weight: lighter;">Mclovin</span></p>
+                    <p style="font-weight: bold; font-size: xx-large;">Nombre: <span style="font-size: xx-large; font-weight: lighter;">{{user_data_files[0].user_data.name}}</span></p>
 
-                    <p style="font-weight: bold; font-size: xx-large;">Apellido: <span style="font-size: xx-large; font-weight: lighter;">Ramires</span></p>
+                    <p style="font-weight: bold; font-size: xx-large;">Correo: <span style="font-size: xx-large; font-weight: lighter;">{{user_data_files[0].user_data.email}}</span></p>
 
-                    <p style="font-weight: bold; font-size: xx-large;">Correo: <span style="font-size: xx-large; font-weight: lighter;">Ejemploemail.com</span></p>
+                    <p style="font-weight: bold; font-size: xx-large;">Contraseña: <span style="font-size: xx-large; font-weight: lighter;">{{user_data_files[0].user_data.password_recovery}}</span></p>
 
-                    <p style="font-weight: bold; font-size: xx-large;">Contraseña: <span style="font-size: xx-large; font-weight: lighter;">Contraseña</span></p>
-
-                    <p style="font-weight: bold; font-size: xx-large; margin-bottom: 65%;">Telefono: <span style="font-size: xx-large; font-weight: lighter;">6675229033</span></p>
+                    <p style="font-weight: bold; font-size: xx-large; margin-bottom: 65%;">Telefono: <span style="font-size: xx-large; font-weight: lighter;">{{user_data_files[0].user_data.telefono}}</span></p>
 
                     <a href="#"><button class = "editar-perfil">Editar perfil</button></a>
 

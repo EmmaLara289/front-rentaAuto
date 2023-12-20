@@ -56,6 +56,7 @@ export class CatComponent implements OnInit {
     });
 
     this.loadCat();
+    console.log(this.formDate(this.fechaActual));
 
   }
 
@@ -241,7 +242,7 @@ export class CatComponent implements OnInit {
   }
 
   Rentar(){
-    this._userService.rentVehicle(this.user.user.id_user, this.vehicleModalData.data.id_vehicles, this.formDate(this.range.get('start').value), this.formDate(this.range.get('end').value), this.dias).subscribe((response) => {
+    this._userService.rentVehicle(this.user.user.id_user, this.vehicleModalData.data.id_vehicles, this.formDate(this.fechaActual), this.formDate(this.range.get('end').value), this.dias).subscribe((response) => {
       Swal.fire({
         title: "Rentado",
         text: "El vehículo ha sido rentado con éxito. Puedes ir a reservaciones para ver los detalles",
