@@ -7,14 +7,14 @@
     <div class="main" style="background-color: rgb(199, 199, 255);">
 
         <div style="background-color: rgb(199, 199, 255); margin-left: 30%; padding-top: 50px; margin-bottom: -50px;">
-            <p style = "font-size: x-large; font-weight: bold; color: black;">Por favor, seleccione primero un rango de fechas</p>
+            <p style="font-size: x-large; font-weight: bold; color: black;">Por favor, seleccione primero un rango de fechas</p>
         </div>
 
         <div style="padding: 20px; background-color: rgb(199, 199, 255);"></div>
         <div style="width: 900px; height: 60px; margin: 0 auto; margin-bottom: 30px; background-color: rgb(255, 255, 255); padding-left: 50px; padding-top: 5px; border-radius: 20px;">
 
             <mat-form-field class="example-form-field pr-md-3 pl-md-2">
-                <mat-label style = "color: black;">Seleccione un rango</mat-label>
+                <mat-label style="color: black;">Seleccione un rango</mat-label>
                 <mat-date-range-input [formGroup]="range" [rangePicker]="rangePicker" [min]="fechaActual">
                     <input matStartDate formControlName="start" placeholder="Inicio">
                     <input matEndDate formControlName="end" placeholder="Fin">
@@ -29,7 +29,7 @@
             </mat-form-field>
 
             <mat-form-field class="pr-md-3" style="width: 80px; height: auto;">
-                <mat-label style = "color: black;">Dias</mat-label>
+                <mat-label style="color: black;">Dias</mat-label>
                 <input *ngIf="dias === undefined" matInput disabled>
                 <input *ngIf="dias !== undefined" matInput [value]="dias" readonly style="width: 80px;">
             </mat-form-field>
@@ -43,24 +43,24 @@
                 </mat-select>
             </mat-form-field-->
 
-            <mat-form-field style = "width: 15%; margin-right: 20px;">
-                <mat-label style = "color: black;">Tipo de Auto</mat-label>
+            <mat-form-field style="width: 15%; margin-right: 20px;">
+                <mat-label style="color: black;">Tipo de Auto</mat-label>
                 <mat-select [(ngModel)]="modelSelected" [disabled]="modalCat" (selectionChange)="selectModel($event)">
                     <mat-option value="undefined">Todos</mat-option>
                     <mat-option *ngFor="let model of models" value="{{model}}">{{model}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field style = "width: 15%; margin-right: 20px;">
-                <mat-label style = "color: black;">Color de Auto</mat-label>
+            <mat-form-field>
+                <mat-label>Color de Auto</mat-label>
                 <mat-select [(ngModel)]="selectedColor" [disabled]="!modelSelected && modalCat" (selectionChange)="selectColor($event)">
                     <mat-option value="undefined">Todos</mat-option>
                     <mat-option *ngFor="let color of colores" value="{{color}}">{{color}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field style = "width: 19%;">
-                <mat-label style = "color: black;">Cantidad de pasajeros</mat-label>
+            <mat-form-field>
+                <mat-label>Cantidad de pasajeros</mat-label>
                 <mat-select [(ngModel)]="selectedPasajero" [disabled]="!modelSelected && modalCat" (selectionChange)="selectPasajero($event)">
                     <mat-option value="undefined">Todos</mat-option>
                     <mat-option *ngFor="let pasajero of pasajeros" value="{{pasajero}}">{{pasajero}}</mat-option>
@@ -105,7 +105,6 @@
 
                     </mat-card-content>
                     <!-- Botón al final del mat-card -->
-                    <button mat-raised-button color="primary" style="margin-bottom: 5px;" (click)="openModalApart(item, apartVehicle)">Reservar</button>
                     <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
                 </mat-card>
             </div>
@@ -152,7 +151,7 @@
                     <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)">Detalles</button>
                 </mat-card>
             </div-->
-            
+
             <!--div class="col-md-2" style="padding-bottom: 10px; padding-top: 10px;">
                 <mat-card style="z-index: 1; text-align: center; width: 400px; height: auto; display: flex; flex-direction: column;">
                     <mat-card-content style="flex: 1;">
@@ -175,7 +174,7 @@
                 </mat-card>
             </div-->
 
-            <div class="card" style = "margin-bottom: 25px;">
+            <div class="card" style="margin-bottom: 25px;">
                 <h1>Ubicación de entrega y regreso</h1>
                 <img src="https://cdn.discordapp.com/attachments/945873120798072882/1184747844142387230/image.png?ex=658d1969&is=657aa469&hm=4a4455e6b9bb838794e1eee572056ebba862ad096b045100277647b59e21409c&" style="margin-bottom: 5%; border-radius: 10px;">
                 <a href="https://www.google.com/maps/dir/24.7859918,-107.3494046/aeropuerto+culiacan+google+mpas/@24.7702168,-107.4905631,14.5z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x86bcd02a25d3dd2b:0xa48f8625f0e39427!2m2!1d-107.4768322!2d24.7654447?entry=ttu" style="font-size: xx-large;"
@@ -289,7 +288,8 @@
         </div>
 
         <div class="modal-footer">
-            <button mat-raised-button color="primary" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;">Reservar</button>
+            <button mat-raised-button color="primary" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;" (click)="openModalApart(vehicleModalData, apartVehicle)">Reservar</button>
+            <button mat-raised-button color="primary" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;" (click)="openModalRent(vehicleModalData, apartVehicle)">Rentar</button>
         </div>
 
     </ng-template>
@@ -317,8 +317,9 @@
                     <div style="flex: 1; padding-left: 5px;">
 
                         <p><b><strong>Descripcion:</strong></b> {{vehicleModalData.data.descripcion}}</p>
-                        <p><b><strong>Renta:</strong></b> {{vehicleModalData.data.precio_renta}}</p>
-                        <p><b><strong>Precio:</strong></b> {{precio}}</p>
+                        <p><b><strong>Cuota diaria: $</strong></b> {{vehicleModalData.data.precio_renta}}</p>
+                        <p><b><strong>Total por renta:</strong></b> {{precio}}</p>
+                        <p><b><strong>Total por reservar:</strong></b> {{precio_apart}}</p>
 
                     </div>
 

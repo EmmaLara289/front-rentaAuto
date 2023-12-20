@@ -1,0 +1,51 @@
+.contenedor-principal {
+    background-color: white;
+    padding: 20px;
+    padding-bottom: 130px;
+    border-radius: 10px;
+}
+
+.contenedor-secundario {
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    color: black;
+}
+
+.cambiar-foto {
+    width: 60%;
+    padding: 7px;
+    background-color: rgb(63, 81, 181);
+    color: white;
+    border: rgb(63, 81, 181) solid;
+    border-radius: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 15%;
+    margin-top: 10px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.cambiar-foto:hover {
+    background-color: white;
+    color: rgb(63, 81, 181);
+}
+
+.editar-perfil {
+    width: 40%;
+    padding: 10px;
+    background-color: rgb(63, 81, 181);
+    color: white;
+    border: rgb(63, 81, 181) solid;
+    border-radius: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 25%;
+    margin-top: 20px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.editar-perfil:hover {
+    background-color: white;
+    color: rgb(63, 81, 181);
+}

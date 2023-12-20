@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { CatComponent } from './cat/cat.component';
 import { RegisterComponent } from './register/register.component';
 import { ReservedComponent } from './reserved/reserved.component';
+import { ProfileOurComponent } from './profile-our/profile-our.component';
 
 
 
@@ -46,7 +47,8 @@ import { ReservedComponent } from './reserved/reserved.component';
         ProfileComponent,
         CatComponent, 
         RegisterComponent,
-        ReservedComponent
+        ReservedComponent,
+        ProfileOurComponent
     ]
 })
 export class ExamplesModule { }

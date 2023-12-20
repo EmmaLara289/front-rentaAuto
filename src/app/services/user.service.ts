@@ -116,7 +116,34 @@ export class UserService {
 
     return this._http.get(global.url + 'getVehicleData',  { params: params});
   }
-  
 
+  public calcularApartado(dias: number,id_vehicles: number):Observable<any>{
+    let params = new HttpParams();
+    params = params.set('dias', dias);
+    params = params.set('id_vehicles', id_vehicles);
+    return this._http.get(global.url + "calcularApartado", { params: params});
+  }
+
+  public rentVehicle(id_user: number, id_vehicles: number, fecha_inicio: any, fecha_final: any, dias:number):Observable<any>{
+    return this._http.post(global.url + "rentVehicle", 
+    {id_user:id_user, id_vehicles:id_vehicles, fecha_inicio:fecha_inicio, fecha_final:fecha_final, dias:dias});
+  }
+
+  public reservateVehicle(id_user: number, id_vehicles: number, fecha_inicio: any, fecha_final: any, dias:number):Observable<any>{
+    return this._http.post(global.url + "reservateVehicle", 
+    {id_user:id_user, id_vehicles:id_vehicles, fecha_inicio:fecha_inicio, fecha_final:fecha_final, dias:dias});
+  }
+
+  public cancelReservacion(id_procesos_vehicles: number):Observable<any>{
+    return this._http.post(global.url + "cancelReservacion",
+    {id_procesos_vehicles:id_procesos_vehicles});
+  }
+
+  public RegresarReservacion(id_procesos_vehicles: number):Observable<any>{
+    return this._http.post(global.url + "regresarReservacion",
+    {id_procesos_vehicles:id_procesos_vehicles});
+  }
+  
+  
 
 }

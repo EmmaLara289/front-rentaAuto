@@ -4,7 +4,8 @@
 
     <div class="main" style="background-color: rgb(199, 199, 255); min-height: 750px;">
         <div class="filter"></div>
-        <div *ngFor="let item of reserved" class="row" style="width: 600px; min-height: 300px; padding-left: 30px; padding-bottom: 10px;">
+        <div class="row">
+            <!--div *ngFor="let item of reserved" class="row" style="width: 600px; min-height: 300px; padding-left: 30px; padding-bottom: 10px;">
             <mat-card style="z-index: 1; width:1400px;">
                 <mat-card-content>
                     <mat-card-title style="text-align: center;">{{item.renta.nombre_auto}}</mat-card-title>
@@ -14,8 +15,106 @@
                     <button mat-raised-button color="primary" (click)="openModalVehicle (item, vehiclesTemplate)">Detalles</button>
                 </mat-card-content>
             </mat-card>
+        </div-->
+            <div *ngFor="let item of reserved" class="col-md-2" style="padding-bottom: 10px; margin-right: 10px;">
+                <mat-card style="z-index: 1; text-align: center; width: 300px; height: 480px; display: flex; flex-direction: column;">
+                    <mat-card-content style="flex: 1;">
+                        <!-- Contenido del mat-card -->
+                        <mat-card-title style="text-align: left;">{{item.renta.nombre_auto}}</mat-card-title>
+                        <mat-card-subtitle style="text-align: left; padding-bottom: 20px;">{{item.renta.modelo}}</mat-card-subtitle>
+                        <img src="{{item.url}}" alt="" style="width: 160px; height: 111px; padding-bottom: 5px;">
+                        <mat-card-subtitle style="text-align: center; margin-top: 2%; color: black;">{{item.renta.pasajeros}} Pasajeros</mat-card-subtitle>
+                        <mat-card-subtitle style="text-align: center; margin-top: -4%; color: black; padding-bottom: 5%;">Transmisión: {{item.renta.transmicion}}</mat-card-subtitle>
+
+                        <div style="padding: 0; display: flex; border-top: 1px solid; border-bottom: 1px solid; padding: 10px; border-color: rgb(180, 180, 180);">
+
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: burlywood"> {{item.renta.equipaje}} Maletas <mat-icon>work</mat-icon> </span>
+                            <span *ngIf="item.renta.a_c === 0" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: red;">A/C <mat-icon>ac_unit</mat-icon></span>
+                            <span *ngIf="item.renta.a_c === 1" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: green;">A/C <mat-icon>ac_unit</mat-icon></span>
+                            <span *ngIf="item.renta.airbag === 0" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: red;">Air bag <mat-icon>airline_seat_recline_extra</mat-icon></span>
+                            <span *ngIf="item.renta.airbag === 1" style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small; color: green;">Air bag <mat-icon>airline_seat_recline_extra</mat-icon></span>
+                            <span style="padding-left: 10px; padding-right: 10px; flex: 1; font-size: small;"> {{item.renta.puertas}} Puertas <mat-icon>door_sliding</mat-icon></span>
+
+                        </div>
+
+                    </mat-card-content>
+                    <!-- Botón al final del mat-card -->
+                    <button mat-raised-button color="primary" (click)="openModalVehicle(item, vehiclesTemplate)" *ngIf="item.accion !== 2">Detalles</button>
+                    <button mat-raised-button color="warn" (click)="openModalVehicle(item, vehiclesTemplate)" *ngIf="item.accion === 2">Detalles</button>
+                </mat-card>
+            </div>
         </div>
     </div>
+
+    <ng-template #vehiclesTemplate>
+
+        <div class="modal-header" style="background-color: rgb(63, 81, 181);">
+            <h1 class="modal-title text-center" style="color: white; margin-top: 2%;"> {{vehicleModalData.renta.nombre_auto}}</h1>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{vehicleModalData.url}}" alt="" style="width: 100%; height: auto; padding-bottom: 5px;">
+                </div>
+                <div class="col-md-6" style="display: flex;">
+                    <div style="flex: 1; border-right: 1px rgb(179, 179, 179) solid;">
+
+                        <p><b><strong>Modelo:</strong></b> {{vehicleModalData.renta.modelo}}</p>
+                        <p><b><strong>Color:</strong></b> {{vehicleModalData.renta.color}}</p>
+                        <p><b><strong>Placas:</strong></b> {{vehicleModalData.renta.placas}}</p>
+                        <p><b><strong>Año:</strong></b> {{vehicleModalData.renta.ano}}</p>
+
+                    </div>
+                    <div style="flex: 1; border-right: 1px rgb(179, 179, 179) solid;">
+
+                        <p><b><strong>Descripcion:</strong></b> {{vehicleModalData.renta.descripcion}}</p>
+                        <p><b><strong>Renta: $</strong></b> {{vehicleModalData.renta.precio_renta}}</p>
+
+                    </div>
+
+                    <div *ngIf="vehicleModalData.accion === 0" style="flex: 1; padding-left: 5px;">
+
+                        <p><b><strong>Pago Total</strong></b> {{vehicleModalData.renta.precio_total}}</p>
+                        <p><b><strong>Mensaje:</strong></b> {{vehicleModalData.mensaje}}</p>
+                        <p><b><strong>Fecha de inicio:</strong></b> {{vehicleModalData.fecha_inicial}}</p>
+                        <p><b><strong>Fecha de regreso:</strong></b> {{vehicleModalData.fecha_final}}</p>
+
+
+                    </div>
+
+                    <div *ngIf="vehicleModalData.accion === 1" style="flex: 1; padding-left: 5px;">
+
+
+                        <p><b><strong>Adelanto de: $</strong></b>{{vehicleModalData.renta.precio_total}}</p>
+                        <p><b><strong>Diferencia de: $</strong></b>{{vehicleModalData.diferencia}}</p>
+                        <p><b><strong>Mensaje:</strong></b> {{vehicleModalData.mensaje}}</p>
+                        <p><b><strong>Fecha de inicio:</strong></b> {{vehicleModalData.fecha_inicial}}</p>
+                        <p><b><strong>Fecha de regreso:</strong></b> {{vehicleModalData.fecha_final}}</p>
+
+                    </div>
+
+                    <div *ngIf="vehicleModalData.accion === 2" style="flex: 1; padding-left: 5px;">
+
+                        <p><b><strong>Días de retraso: </strong></b> {{vehicleModalData.dias}}</p>
+                        <p><b><strong>Recargo de: $</strong></b>{{vehicleModalData.recargo_de}}</p>
+                        <p><b><strong>Mensaje:</strong></b> {{vehicleModalData.mensaje}}</p>
+                        <p><b><strong>Fecha de inicio:</strong></b> {{vehicleModalData.fecha_inicial}}</p>
+                        <p><b><strong>Fecha de regreso:</strong></b> {{vehicleModalData.fecha_final}}</p>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button mat-raised-button color="primary" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;" *ngIf="vehicleModalData.accion === 1" (click)="openModalCancel(vehicleModalData.renta.id_procesos_vehicles)">Cancelar</button>
+            <button mat-raised-button color="warn" style="margin: 10px; margin-top: 1%; margin-bottom: 1%; margin-right: 40%; width: 20%;" *ngIf="vehicleModalData.accion === 2" (click)="openModalRegresar(vehicleModalData.renta.id_procesos_vehicles)">Regresar</button>
+        </div>
+
+    </ng-template>
 
     <!-- En tu componente que contiene el modal -->
 
