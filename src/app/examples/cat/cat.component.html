@@ -14,7 +14,7 @@
         <div style="width: 900px; height: 60px; margin: 0 auto; margin-bottom: 30px; background-color: rgb(255, 255, 255); padding-left: 50px; padding-top: 5px; border-radius: 20px;">
 
             <mat-form-field class="example-form-field pr-md-3 pl-md-2">
-                <mat-label>Seleccione un rango</mat-label>
+                <mat-label style = "color: black;">Seleccione un rango</mat-label>
                 <mat-date-range-input [formGroup]="range" [rangePicker]="rangePicker" [min]="fechaActual">
                     <input matStartDate formControlName="start" placeholder="Inicio">
                     <input matEndDate formControlName="end" placeholder="Fin">
@@ -29,7 +29,7 @@
             </mat-form-field>
 
             <mat-form-field class="pr-md-3" style="width: 80px; height: auto;">
-                <mat-label>Dias</mat-label>
+                <mat-label style = "color: black;">Dias</mat-label>
                 <input *ngIf="dias === undefined" matInput disabled>
                 <input *ngIf="dias !== undefined" matInput [value]="dias" readonly style="width: 80px;">
             </mat-form-field>
@@ -231,6 +231,7 @@
                 <div class="col-md-6" style="display: flex;">
                     <div style="flex: 1; border-right: 1px rgb(179, 179, 179) solid;">
 
+                        <p><b>Estado:</b></p>
                         <p><b>Modelo:</b></p>
                         <p><b>Color:</b></p>
                         <p><b>Placas:</b></p>
